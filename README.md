@@ -4,6 +4,11 @@ A responsive fashion storefront built with React. Explore a curated collection
 of women's clothing and accessories, search and filter products, save favorites,
 manage a shopping cart, and read or submit product reviews.
 
+Live Demo: Les Petites Trouvailles
+https://les-petites-trouvailles-5u4p.vercel.app
+
+The application is deployed on Vercel.
+
 The application uses the public [DummyJSON API](https://dummyjson.com/) for
 product data and review submissions. It is a demonstration project: DummyJSON
 simulates creating reviews, browser storage keeps submitted reviews available
