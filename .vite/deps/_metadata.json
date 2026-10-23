@@ -1,0 +1,26 @@
+{
+  "hash": "7691e913",
+  "configHash": "5ce9b1c1",
+  "lockfileHash": "4ab8935f",
+  "browserHash": "43d2c6ac",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "574004ba",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "520f4da3",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "react-DPKsgqat": {
+      "file": "react-DPKsgqat.js",
+      "isDynamicEntry": false
+    }
+  }
+}

@@ -1,0 +1,5 @@
+const MIN_QUANTITY = 1;
+const MAX_SELECTION_QUANTITY = 99;
+const CART_STORAGE_KEY = "petites-trouvailles-cart";
+
+export { CART_STORAGE_KEY, MAX_SELECTION_QUANTITY, MIN_QUANTITY };

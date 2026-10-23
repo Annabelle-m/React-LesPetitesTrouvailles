@@ -1,0 +1,109 @@
+.add-to-cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-to-cart__quantity {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  min-height: 42px;
+  padding: 3px;
+  border: 1px solid var(--color-beige);
+  border-radius: var(--radius-small);
+  background: var(--color-white);
+}
+
+.add-to-cart__quantity-button {
+  display: grid;
+  width: 30px;
+  height: 32px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-brown);
+}
+
+.add-to-cart__quantity-button:hover:not(:disabled) {
+  background: var(--color-blush);
+}
+
+.add-to-cart__quantity-button:disabled {
+  color: var(--color-muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.add-to-cart__quantity-value {
+  min-width: 22px;
+  color: var(--color-brown);
+  font-family: var(--font-body);
+  font-size: 12px;
+  text-align: center;
+}
+
+.add-to-cart__submit {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-terracotta);
+  border-radius: var(--radius-small);
+  background: var(--color-terracotta);
+  color: var(--color-on-accent);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease;
+}
+
+.add-to-cart__submit:hover {
+  border-color: var(--color-brown);
+  background: var(--color-brown);
+}
+
+.add-to-cart__submit:focus-visible,
+.add-to-cart__quantity-button:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .add-to-cart__quantity {
+    min-height: 34px;
+    gap: 0;
+  }
+
+  .add-to-cart__quantity-button {
+    width: 25px;
+    height: 28px;
+  }
+
+  .add-to-cart__quantity-value {
+    min-width: 17px;
+    font-size: 11px;
+  }
+
+  .add-to-cart__submit {
+    min-height: 34px;
+    gap: 5px;
+    padding: 6px 7px;
+    font-size: 10px;
+  }
+
+  .add-to-cart__submit svg {
+    width: 14px;
+    height: 14px;
+  }
+}

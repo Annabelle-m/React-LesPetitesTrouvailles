@@ -1,0 +1,96 @@
+.product-modal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgb(var(--color-brown-rgb) / 58%);
+  backdrop-filter: blur(8px);
+  animation: modal-backdrop-enter var(--motion-base) ease both;
+}
+
+.product-modal {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  max-height: min(90vh, 90dvh);
+  overflow-y: auto;
+  padding: 36px;
+  border: 1px solid var(--color-beige);
+  border-radius: 18px;
+  background-color: var(--color-white);
+  box-shadow: 0 24px 70px rgb(var(--color-brown-rgb) / 20%);
+  animation: modal-panel-enter var(--motion-slow) var(--ease-out) both;
+}
+
+@keyframes modal-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.product-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--color-beige);
+  border-radius: 50%;
+  background-color: var(--color-white);
+  color: var(--color-brown);
+  transition:
+    background-color var(--motion-base) ease,
+    transform var(--motion-base) var(--ease-out);
+}
+
+.product-modal__close:hover {
+  transform: rotate(90deg);
+  background-color: var(--color-blush);
+}
+
+@media (max-width: 600px) {
+  .product-modal__overlay {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .product-modal__overlay,
+    .product-modal {
+      animation: none;
+    }
+
+    .product-modal__close:hover {
+      transform: none;
+    }
+  }
+
+  .product-modal {
+    max-height: min(96vh, 96dvh);
+    padding: 48px 18px 24px;
+    border-radius: 14px;
+  }
+}

@@ -1,0 +1,45 @@
+.favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-beige);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-white);
+  color: var(--color-brown);
+  cursor: pointer;
+  transition:
+    color var(--motion-base) ease,
+    background-color var(--motion-base) ease,
+    border-color var(--motion-base) ease,
+    transform var(--motion-base) var(--ease-out);
+}
+
+.favorite-button:hover {
+  transform: scale(1.08);
+  background-color: var(--color-blush);
+}
+
+.favorite-button--active {
+  color: var(--color-terracotta);
+  border-color: var(--color-blush);
+}
+
+.favorite-button--active svg {
+  fill: currentColor;
+  animation: favorite-heart-pop var(--motion-base) var(--ease-out);
+}
+
+@keyframes favorite-heart-pop {
+  50% {
+    transform: scale(1.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .favorite-button--active svg {
+    animation: none;
+  }
+}

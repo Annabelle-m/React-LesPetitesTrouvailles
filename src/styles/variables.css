@@ -1,0 +1,85 @@
+:root {
+  color-scheme: light;
+
+  /* Couleurs principales */
+  --color-terracotta: #a96046;
+  --color-blush: #f2ddd1;
+  --color-cream: #f7f3ec;
+  --color-sage: #7d8b70;
+  --color-brown: #514038;
+  --color-white: #fffdfa;
+  --color-on-accent: #fffdfa;
+  --color-terracotta-rgb: 169 96 70;
+  --color-brown-rgb: 81 64 56;
+  --color-sage-rgb: 125 139 112;
+
+  /* Couleurs complémentaires */
+  --color-beige: #e8ded2;
+  --color-beige-rgb: 232 222 210;
+  --color-muted: #897c72;
+  --color-ink: #382d28;
+  --color-surface: rgb(255 253 250 / 88%);
+  --color-glow: rgb(242 221 209 / 28%);
+  --color-hero-highlight: rgb(255 253 250 / 70%);
+  --color-brand-surface: transparent;
+  --color-error-text: #8c3d30;
+  --color-error-border: #dca397;
+  --color-error-surface: #fff1ed;
+
+  /* Typographies */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Poppins", sans-serif;
+  --font-size-page-title: clamp(28px, 3vw, 40px);
+  --font-size-page-description: 14px;
+  --font-size-eyebrow: 10px;
+  --font-weight-page-title: 500;
+  --line-height-page-title: 1.2;
+  --line-height-page-description: 1.7;
+  --letter-spacing-page-title: -0.025em;
+  --letter-spacing-eyebrow: 0.16em;
+
+  /* Dimensions */
+  --sidebar-width: 264px;
+
+  /* Arrondis */
+  --radius-small: 10px;
+  --radius-medium: 18px;
+  --radius-large: 28px;
+  --radius-pill: 999px;
+
+  /* Ombres et mouvements */
+  --shadow-soft: 0 14px 40px rgb(var(--color-brown-rgb) / 7%);
+  --shadow-raised: 0 22px 54px rgb(var(--color-brown-rgb) / 13%);
+  --motion-fast: 180ms;
+  --motion-base: 280ms;
+  --motion-slow: 700ms;
+  --motion-reveal: 1100ms;
+  --motion-stagger: 45ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-terracotta: #d69578;
+  --color-blush: #3b2c27;
+  --color-cream: #191715;
+  --color-sage: #a6b893;
+  --color-brown: #eee4dc;
+  --color-white: #25211e;
+  --color-on-accent: #211b18;
+  --color-terracotta-rgb: 214 149 120;
+  --color-brown-rgb: 238 228 220;
+  --color-sage-rgb: 166 184 147;
+  --color-beige: #3c342f;
+  --color-beige-rgb: 60 52 47;
+  --color-muted: #b6a99e;
+  --color-ink: #fff8f1;
+  --color-surface: rgb(37 33 30 / 94%);
+  --color-glow: rgb(91 61 48 / 22%);
+  --color-hero-highlight: rgb(37 33 30 / 55%);
+  --color-brand-surface: #fffdfa;
+  --color-error-text: #f0aa9b;
+  --color-error-border: #78483f;
+  --color-error-surface: #33221f;
+}

@@ -1,0 +1,52 @@
+.star-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star-rating__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+
+.star-rating__star {
+  display: block;
+  width: 20px;
+  height: 20px;
+  color: var(--color-muted);
+  transition: color var(--motion-fast) ease;
+}
+
+.star-rating__star--active {
+  color: var(--color-terracotta);
+}
+
+.star-rating__visual {
+  position: relative;
+  display: inline-flex;
+  color: var(--color-muted);
+}
+
+.star-rating__fill {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  width: var(--star-fill);
+  color: var(--color-terracotta);
+}
+
+.star-rating__fill .star-rating__star {
+  width: 20px;
+  max-width: none;
+  color: inherit;
+}
+
+.star-rating__button:hover .star-rating__star {
+  color: var(--color-terracotta);
+}

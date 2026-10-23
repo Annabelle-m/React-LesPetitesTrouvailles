@@ -1,0 +1,24 @@
+.notification-viewport {
+  position: fixed;
+  z-index: 1030;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.notification-viewport > * {
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .notification-viewport {
+    right: 16px;
+    bottom: calc(148px + env(safe-area-inset-bottom));
+    left: 16px;
+    align-items: stretch;
+  }
+}
