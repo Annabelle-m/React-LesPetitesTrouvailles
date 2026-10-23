@@ -4,6 +4,7 @@ import ProductCard from "../../products/components/ProductCard";
 import { useProducts } from "../../products/hooks/useProducts";
 import { useFavoriteProducts } from "../hooks/useFavoriteProducts";
 import { ROUTES } from "../../../shared/constants/routes";
+import { Button } from "../../../shared/components/ui";
 import "./HomePage.css";
 
 function HomePage() {
@@ -38,9 +39,9 @@ function HomePage() {
             La mode féminine, avec des pièces qui vous ressemblent.
           </p>
 
-          <Link to={ROUTES.products} className="home-page__button">
+          <Button as={Link} to={ROUTES.products} variant="primary">
             Découvrir la collection
-          </Link>
+          </Button>
         </div>
 
         <img

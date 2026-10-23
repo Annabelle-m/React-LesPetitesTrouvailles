@@ -1,5 +1,8 @@
 .home-page {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2.5vh, 28px);
 }
 
 .home-page__status {
@@ -15,7 +18,7 @@
   isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  min-height: 500px;
+  min-height: clamp(260px, 37vh, 340px);
   overflow: hidden;
   border: 1px solid rgb(var(--color-terracotta-rgb) / 10%);
   border-radius: var(--radius-large);
@@ -33,14 +36,14 @@
   position: relative;
   z-index: 1;
   align-self: center;
-  padding: clamp(36px, 5vw, 76px);
+  padding: clamp(24px, 3.2vw, 52px);
 }
 
 .home-page__hero-image {
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 500px;
+  min-height: 0;
   object-fit: cover;
   object-position: 64% center;
   animation: hero-image-enter var(--motion-reveal) var(--ease-out) both;
@@ -84,43 +87,14 @@
   line-height: 1.85;
 }
 
-.home-page__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 48px;
-  padding: 12px 22px;
-  border: 1px solid var(--color-terracotta);
-  border-radius: var(--radius-pill);
-  background-color: var(--color-terracotta);
-  color: var(--color-on-accent);
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-  box-shadow: 0 8px 18px rgb(var(--color-terracotta-rgb) / 18%);
-  transition:
-    background-color var(--motion-base) ease,
-    border-color var(--motion-base) ease,
-    box-shadow var(--motion-base) ease,
-    transform var(--motion-base) var(--ease-out);
-}
-
-.home-page__button:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-ink);
-  background-color: var(--color-ink);
-  box-shadow: 0 12px 24px rgb(var(--color-brown-rgb) / 18%);
-}
-
 .home-page__products {
-  margin-top: clamp(40px, 5vw, 68px);
+  min-width: 0;
 }
 
 .home-page__products h2 {
-  margin: 0 0 24px;
+  margin: 0 0 clamp(12px, 1.6vh, 18px);
   color: var(--color-brown);
-  font-size: clamp(24px, 3vw, 30px);
+  font-size: clamp(22px, 2.5vw, 28px);
   font-weight: 500;
 }
 
@@ -134,7 +108,20 @@
   min-width: 0;
 }
 
+.home-page__product-list .product-card__image {
+  height: clamp(125px, 18vh, 165px);
+  padding: clamp(8px, 1.3vw, 16px);
+}
+
+.home-page__product-list .product-card__content {
+  padding: clamp(10px, 1.3vw, 16px);
+}
+
 @media (max-width: 768px) {
+  .home-page {
+    gap: 0;
+  }
+
   .home-page__hero {
     grid-template-columns: minmax(0, 1fr);
     min-height: 0;
@@ -145,13 +132,17 @@
   }
 
   .home-page__hero-image {
-    height: clamp(240px, 64vw, 360px);
+    height: clamp(200px, 56vw, 320px);
     min-height: 0;
     object-position: 68% 40%;
   }
+
+  .home-page__products {
+    margin-top: 32px;
+  }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .home-page__product-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -159,11 +150,71 @@
 
 @media (max-width: 480px) {
   .home-page__products {
-    margin-top: 32px;
+    margin-top: 24px;
   }
 
   .home-page__product-list {
     gap: 12px 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-height: 760px) {
+  .home-page {
+    gap: 12px;
+  }
+
+  .home-page__hero {
+    min-height: clamp(190px, 32vh, 230px);
+  }
+
+  .home-page__hero-content {
+    padding: 16px;
+  }
+
+  .home-page__eyebrow {
+    margin-bottom: 12px;
+  }
+
+  .home-page__hero h1 {
+    margin-bottom: 12px;
+    font-size: clamp(28px, 4vw, 34px);
+  }
+
+  .home-page__description {
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .home-page__products h2 {
+    margin-bottom: 10px;
+  }
+
+  .home-page__product-list .product-card__image {
+    height: clamp(90px, 15vh, 110px);
+  }
+
+  .home-page__product-list .product-card__content {
+    padding: 8px;
+  }
+
+  .home-page__product-list .product-card__category {
+    margin-bottom: 4px;
+    font-size: 9px;
+  }
+
+  .home-page__product-list .product-card__title {
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .home-page__product-list .product-card__rating {
+    gap: 4px;
+    margin-bottom: 7px;
+  }
+
+  .home-page__product-list .product-card__price {
+    font-size: 14px;
   }
 }
 

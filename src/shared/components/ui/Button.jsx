@@ -1,4 +1,5 @@
 function Button({
+  as: Component = "button",
   className = "",
   type = "button",
   variant = "custom",
@@ -9,7 +10,13 @@ function Button({
     .filter(Boolean)
     .join(" ");
 
-  return <button className={classes} type={type} {...props} />;
+  return (
+    <Component
+      className={classes}
+      type={Component === "button" ? type : undefined}
+      {...props}
+    />
+  );
 }
 
 export default Button;
