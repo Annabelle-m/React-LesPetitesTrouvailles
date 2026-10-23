@@ -36,6 +36,8 @@ function Sidebar() {
             <Icon size={20} strokeWidth={1.7} />
             <span>{label}</span>
           </NavLink>
+          
+          
         ))}
         <CartWidget />
         <ThemeToggle />

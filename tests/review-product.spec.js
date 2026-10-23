@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  await page.goto('http://localhost:5173/');
+  await page.goto('https://les-petites-trouvailles-5u4p.vercel.app');
   await page.getByRole('link', { name: 'Vêtements' }).click();
   await page.getByRole('link', { name: 'Voir Blue Women\'s Handbag' }).click();
   await page.getByRole('button', { name: 'Écrire un avis' }).click();
