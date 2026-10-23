@@ -3,7 +3,10 @@ import { SlidersHorizontal } from "lucide-react";
 import { useProducts } from "../hooks/useProducts";
 import { PRODUCT_CATEGORIES } from "../constants/productCategories";
 import { PRODUCT_ITEMS_PER_PAGE } from "../constants/productPagination";
-import {INITIAL_MINIMUM_RATING, MIN_PRODUCT_PRICE, } from "../constants/productFilters";
+import {
+  INITIAL_MINIMUM_RATING,
+  MIN_PRODUCT_PRICE,
+} from "../constants/productFilters";
 import { PRODUCT_SORT, PRODUCT_SORT_LOCALE } from "../constants/productSorting";
 import ProductCard from "../components/ProductCard";
 import ProductFilters from "../components/ProductFilters";
@@ -14,7 +17,6 @@ import { usePagination } from "../../../shared/hooks/usePagination";
 import "./ProductsPage.css";
 
 function ProductsPage() {
-  const { products, isLoading, error } = useProducts();
   const productGridRef = useRef(null);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,6 +26,11 @@ function ProductsPage() {
   const [minRating, setMinRating] = useState(INITIAL_MINIMUM_RATING);
   const [sortOrder, setSortOrder] = useState(PRODUCT_SORT.recommended);
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+
+  const { products, isLoading, error } = useProducts({
+    searchTerm,
+    categories: selectedCategories,
+  });
 
   const highestPrice = useMemo(
     () =>
@@ -48,23 +55,13 @@ function ProductsPage() {
   );
 
   const filteredProducts = useMemo(() => {
-    const normalizedSearch = searchTerm.trim().toLowerCase();
-
     const matchingProducts = products.filter((product) => {
-      const matchesSearch =
-        product.title.toLowerCase().includes(normalizedSearch) ||
-        product.description.toLowerCase().includes(normalizedSearch);
-
-      const matchesCategory =
-        selectedCategories.length === 0 ||
-        selectedCategories.includes(product.category);
-
       const matchesPrice =
         product.price >= minPrice && product.price <= activeMaxPrice;
 
       const matchesRating = product.rating >= minRating;
 
-      return matchesSearch && matchesCategory && matchesPrice && matchesRating;
+      return matchesPrice && matchesRating;
     });
 
     switch (sortOrder) {
@@ -81,15 +78,7 @@ function ProductsPage() {
       default:
         return matchingProducts;
     }
-  }, [
-    products,
-    searchTerm,
-    selectedCategories,
-    minPrice,
-    activeMaxPrice,
-    minRating,
-    sortOrder,
-  ]);
+  }, [products, minPrice, activeMaxPrice, minRating, sortOrder]);
 
   const {
     currentItems: currentProducts,
@@ -103,12 +92,18 @@ function ProductsPage() {
     productGridRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const resetPriceFilter = () => {
+    setMinPrice(MIN_PRODUCT_PRICE);
+    setMaxPrice(null);
+  };
+
   const toggleCategory = (categoryValue) => {
     setSelectedCategories((currentCategories) =>
       currentCategories.includes(categoryValue)
         ? currentCategories.filter((value) => value !== categoryValue)
         : [...currentCategories, categoryValue],
     );
+    resetPriceFilter();
   };
 
   const handleMinPriceChange = (value) => {
@@ -128,8 +123,7 @@ function ProductsPage() {
   const resetFilters = () => {
     setSearchTerm("");
     setSelectedCategories([]);
-    setMinPrice(MIN_PRODUCT_PRICE);
-    setMaxPrice(null);
+    resetPriceFilter();
     setMinRating(INITIAL_MINIMUM_RATING);
     setSortOrder(PRODUCT_SORT.recommended);
   };
@@ -189,12 +183,16 @@ function ProductsPage() {
             categoryCounts={categoryCounts}
             selectedCategories={selectedCategories}
             onToggleCategory={toggleCategory}
-            onResetCategories={() => setSelectedCategories([])}
+            onResetCategories={() => {
+              setSelectedCategories([]);
+              resetPriceFilter();
+            }}
             minPrice={minPrice}
             maxPrice={activeMaxPrice}
             highestPrice={highestPrice}
             onMinPriceChange={handleMinPriceChange}
             onMaxPriceChange={handleMaxPriceChange}
+            onResetPrice={resetPriceFilter}
             minRating={minRating}
             onRatingChange={handleRatingChange}
             onResetFilters={resetFilters}

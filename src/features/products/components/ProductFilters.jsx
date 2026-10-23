@@ -22,6 +22,7 @@ function ProductFilters({
   highestPrice,
   onMinPriceChange,
   onMaxPriceChange,
+  onResetPrice,
   minRating,
   onRatingChange,
   onResetFilters,
@@ -103,13 +104,7 @@ function ProductFilters({
         <div className="product-filters__section-header">
           <h3>Prix</h3>
 
-          <Button
-            variant="ghost"
-            onClick={() => {
-              onMinPriceChange(MIN_PRODUCT_PRICE);
-              onMaxPriceChange(highestPrice);
-            }}
-          >
+          <Button variant="ghost" onClick={onResetPrice}>
             Réinitialiser
           </Button>
         </div>
